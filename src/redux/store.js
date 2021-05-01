@@ -1,17 +1,19 @@
-import { createStore, combineReducers } from 'redux'
+import { configureStore } from '@reduxjs/toolkit'
 
-import { reducer } from './reducer'
+// giving the import an alias , as the word reducer is being used too much and is confusing
+import { reducer as messagesReducer } from './reducer'
 
-const rootReducer = combineReducers({
-  messages: reducer
-})
+// const rootReducer = combineReducers({
+//   messages: reducer
+// })
 
 
 //https://github.com/zalmoxisus/redux-devtools-extension#usage
 
-const store = createStore(
-  rootReducer, /* preloadedState, */
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-)
+const store = configureStore({
+  reducer: {
+    messages: messagesReducer
+  }
+})
 
 export { store }

@@ -13,7 +13,7 @@ function App(props) {
   }
 
   const handleClick = () => {
-    dispatch(addMessage(value))
+    dispatch(addMessage({ value }))
     setValue('')
   }
 
