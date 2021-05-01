@@ -1,22 +1,25 @@
 import { useState } from 'react'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addMessage } from './redux/actions'
 
  
 function App(props) {
   const [value, setValue] = useState('')
+  const dispatch = useDispatch()
+  const messages = useSelector(state => state.messages)
+
   const handleChange = e => {
     setValue(e.target.value)
   }
 
   const handleClick = () => {
-    props.dispatchAddMessage(value)
+    dispatch(addMessage(value))
     setValue('')
   }
 
   const isButtonDisabled = value === ''
 
-  const messageList = props.messages.map(message => <li>{message}</li>)
+  const messageList = messages.map(message => <li>{message}</li>)
 
   return (
     <div className="App">
@@ -28,12 +31,4 @@ function App(props) {
   );
 }
 
-const mapStateToProps = state => ({
-  messages: state.messages
-})
-
-const mapDispatchToProps = dispatch => ({
-  dispatchAddMessage: message => dispatch(addMessage(message))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App
