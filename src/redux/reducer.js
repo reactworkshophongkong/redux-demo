@@ -26,4 +26,11 @@ const reducer = createReducer([], builder => {
     })
 })
 
-export { reducer }
+const addMessageInProgressReducer = createReducer(false, builder => {
+  builder
+    .addCase(types.ADD_MESSAGE_IN_PROGRESS, (state, action) => {
+      return action.value
+    })
+})
+
+export { reducer, addMessageInProgressReducer }

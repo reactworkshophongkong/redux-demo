@@ -9,6 +9,28 @@ import * as types from './types'
 //   }
 // }
 
+const fakeApiCall = message => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(message)
+    }, 3000)
+  })
+}
+
 const addMessage = createAction(types.ADD_MESSAGE)
 
-export { addMessage }
+const addMessageAsync = (message) => {
+  return async (dispatch, state) => {
+    dispatch({ type: types.ADD_MESSAGE_IN_PROGRESS, value: true })
+
+    try {
+      const result = await fakeApiCall(message)
+      dispatch({ type: types.ADD_MESSAGE_IN_PROGRESS, value: false })
+      dispatch(addMessage(result))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export { addMessage, addMessageAsync, fakeApiCall }
