@@ -27,14 +27,14 @@ function App(props) {
   // const messageList = messages.map(message => <li>{message}</li>)
 
   // using connect
-  const messageList = props.messages.map(message => <li>{message}</li>)
+  const messageList = props.messages.map(message => <li className="item">{message}</li>)
 
   return (
     <div className="App">
         <p>Redux Demo</p>
-        {messageList}
         <input type="text" onChange={handleChange} value={value} placeholder="Enter message..." />
         <button disabled={isButtonDisabled} onClick={handleClick}>Submit</button>
+        {messageList}
     </div>
   );
 }
