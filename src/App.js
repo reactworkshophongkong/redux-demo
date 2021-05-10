@@ -33,8 +33,8 @@ function App(props) {
   return (
     <div className="App">
         <h1>Redux Demo</h1>
-        <input type="text" onChange={handleChange} value={value} placeholder="Enter message..." />
-        <button disabled={isButtonDisabled} onClick={handleClick}>Submit</button>
+        <input className="input" type="text" onChange={handleChange} value={value} placeholder="Enter message..." />
+        <button className="button" disabled={isButtonDisabled} onClick={handleClick}>Submit</button>
         {messageList}
     </div>
   );
