@@ -24,8 +24,8 @@ function AppRTK(props) {
   return (
     <div className="App">
         <p>Redux Demo with RTK</p>
-        <input type="text" onChange={handleChange} value={value} placeholder="Enter message..." />
-        <button disabled={isButtonDisabled} onClick={handleClick}>Submit</button>
+        <input className="input" type="text" onChange={handleChange} value={value} placeholder="Enter message..." />
+        <button className="button" disabled={isButtonDisabled} onClick={handleClick}>Submit</button>
         {messageList}
     </div>
   );
