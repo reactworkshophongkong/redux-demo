@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useDispatch, useSelector, connect } from 'react-redux'
 import { addMessage } from './redux/actions'
+import { addMessage as addMessageRTK } from './redux-using-rtk/actions'
 
  
 function App(props) {
